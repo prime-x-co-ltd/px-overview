@@ -114,8 +114,7 @@ module.exports = {
   //webpack-dev-server サーバーの設定
   devServer: {
     open: true,
-    openPage: 'index.html',
-    contentBase: path.join(__dirname, 'public'),
+    openPage: 'kintoneアプリのURL',
     watchContentBase: true,
     port: 8080
   },
