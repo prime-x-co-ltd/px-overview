@@ -109,12 +109,13 @@ module.exports = {
     ]
   },
   //デベロッパーツールの設定
-  devtool: 'cheap-module-eval-source-map’,
+  devtool: 'cheap-module-eval-source-map',
 
   //webpack-dev-server サーバーの設定
   devServer: {
     open: true,
-    openPage: 'dist/customize.js',
+    openPage: 'index.html',
+    contentBase: path.join(__dirname, 'public'),
     watchContentBase: true,
     port: 8080
   },
@@ -128,6 +129,7 @@ module.exports = {
 
 
 * devtool　：デバッグのためのソース出力の設定
+  * 公式：https://webpack.js.org/configuration/devtool/
 
 
 * devServer　：webpack-dev-serverの設定
@@ -152,7 +154,7 @@ module.exports = {
     "scripts": {
       "start": "webpack-dev-server",
       "build": "webpack",
-      "build:prod": "webpack --mode production"
+      "build:prod": "webpack --mode=production"
     },
     ```
 
@@ -176,7 +178,7 @@ module.exports = {
   │    ├─ js/            //機能毎
   │    │   └─ ***.js
   │    └─ index.js       //エントリーポイント
-  ├─ doc/            //ドキュメント配置
+  ├─ docs/            //ドキュメント配置
   │    └─ ***.md
   ├─ package.json
   ├─ package-lock.json
@@ -190,7 +192,7 @@ module.exports = {
 
 ### ローカルWebサーバーを立てる
 * kintoneのアプリ「設定」 > 「JS/CSSでカスタマイズ」
-　https://localhost:8080/customize.js を追加
+* https://localhost:8080/customize.js を追加
 * "npm run start" でサーバー立ち上げ、動作はこちらで確認
 
 ### @kintone/customize-uploaderの利用
