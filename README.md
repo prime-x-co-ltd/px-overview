@@ -45,10 +45,20 @@
 
 ## ディレクトリ構造
 
-- distー配布用ファイル
-- srcーソースファイル
-- docsードキュメント
-- package.json, mafest.jsonなどconfigファイルは直下に配置する
+```
+.
+├── README.md
+├── dist
+│   └── customize.js
+├── package-lock.json
+├── package.json
+├── src
+│   ├── css
+│   └── js
+└── webpack.config.js
+```
+
+
 
 
 
@@ -56,3 +66,36 @@
 
 - docsディレクトリ配下に格納する
 
+- JSDoc3（参考）
+
+  ```bash
+  npm install -g jsdoc
+  ```
+
+  - 設定ファイル | conf.json
+
+    ```javascript
+    {
+        "source": {
+          "include": ["./src/js"],
+          "excludePattern": "(^|\\/)node_modules\\/"
+        },
+        "opts": {
+          "destination": "./docs/"
+        }
+    }
+    ```
+
+  - ドキュメント作成
+
+    ```bash
+    jsdoc -c ./conf.json src
+    ```
+
+  - GitHub Pagesで/docsのみ公開する
+
+  
+
+## kintone
+
+- カスタマイズ画面にリポジトリのURLを設定する
