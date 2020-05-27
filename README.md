@@ -99,3 +99,21 @@
 ## kintone
 
 - カスタマイズ画面にリポジトリのURLを設定する
+
+
+
+
+
+
+
+## レビュー概念図
+
+```sequence
+作業者->確認者: レビュー依頼(Issue)
+確認者-->作業者: 修正依頼
+Note left of 作業者: リポジトリ作成\n実装
+Note right of 確認者: ブランチ作成\nkintone更新
+確認者->作業者: マージ依頼(Pull request)
+作業者->確認者: kintone更新依頼
+```
+
