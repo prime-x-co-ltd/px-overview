@@ -40,6 +40,27 @@
     　ex) test-IconButton-bugFix
 
   - 作業が終わったらレビューを経てmasterブランチにマージする
+  
+- リポジトリ名の変更
+
+  - Gitサーバ側
+
+    ```bash
+    Settings > Repository name > Rename
+    ```
+
+  - ローカルサーバ側
+
+    ```bash
+    vim .git/config #ローカルリポジトリ内で叩く
+    ```
+
+    ```bash
+    [remote "origin"]
+            url = git@github:px-develop/kintone-dm-1405.git #urlを変更
+    ```
+
+    
 
 
 
