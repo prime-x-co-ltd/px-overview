@@ -2,7 +2,7 @@
 
 * 自社開発ツールのうち、AWSを用いたものの管理要領について記す。
 * 開発に際する留意事項を記す。
-* 自社開発ツール保守の要領は<a href="https://primeweb1.backlog.jp/alias/wiki/1074830458" target="_blank">Wiki</a>に記載。
+* 自社開発ツール保守の要領は<a href="https://primeweb1.backlog.jp/wiki/DM2020/%E8%87%AA%E7%A4%BE%E9%96%8B%E7%99%BA%E4%BF%9D%E5%AE%88%E8%A6%81%E7%B6%B1%EF%BC%882019%E5%B9%B4%E5%BA%A6%E7%A7%BB%E6%A4%8D%E7%89%88%EF%BC%89" target="_blank">Wiki</a>に記載。
 
 ## GitHub上で管理するもの
 
