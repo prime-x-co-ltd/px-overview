@@ -61,6 +61,7 @@ webpack
 ### 1-[2] webpack.config.jsの設定
 
 ```
+const webpack = require('webpack'); //プラグインの設定
 const path = require('path');
 
 module.exports = {
@@ -101,7 +102,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         use: [
           {
             loader: 'babel-loader',
@@ -110,14 +111,35 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.css$/,
+        use: [
+            { loader: "style-loader" },
+            { loader: "css-loader" }
+        ]
+      },
     ]
   },
+
+  //プラグインの設定
+  plugins: [
+
+    //webpackの取り込みが必要
+    new webpack.ProvidePlugin({
+    $: 'jquery',
+    jQuery: 'jquery',
+    })
+  ],
+
   //デベロッパーツールの設定
   devtool: 'cheap-module-eval-source-map',
 
   //webpack-dev-server サーバーの設定
   devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    disableHostCheck: true,
+    //options
     open: true,
     openPage: 'kintoneアプリのURL',
     watchContentBase: true,
@@ -137,6 +159,8 @@ module.exports = {
 
 
 * devServer　：webpack-dev-serverの設定
+  * contentBase　─ 公開するリソースのルートとなるディレクトリの指定
+  * disabledHostCheck　─ true:localhostへの外部アクセスを許可する
   * open　─ true/false：サーバー起動時に自動的にブラウザを開く/開かない
   * openPage　─ 指定したページを自動的に開く
   * watchContentBase　─ true/false：コンテンツの変更監視をする/しない。trueの場合、ファイル変更時に自動リロード
@@ -147,7 +171,7 @@ module.exports = {
 * scripts　：コマンドの設定。"npm run ＊＊" で実行できる
   ```
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --inline --https",
     "build": "webpack"
   },
   ```
@@ -156,7 +180,7 @@ module.exports = {
   → scriptsでmodeの指定を行う
     ```
     "scripts": {
-      "start": "webpack-dev-server",
+      "start": "webpack-dev-server --inline --https",
       "build": "webpack",
       "build:prod": "webpack --mode=production"
     },
@@ -179,11 +203,14 @@ module.exports = {
   ├─ dist/           //配布用ファイル配置
   │    └─ customize.js
   ├─ src/            //スクリプト配置
-  │    ├─ js/            //機能毎
-  │    │   └─ ***.js
-  │    └─ index.js       //エントリーポイント
-  ├─ docs/            //ドキュメント配置
-  │    └─ ***.md
+  │    ├─ js/           //機能毎
+  │    │   ├─ ***.js
+  │    │   └─ index.js  #entry-point
+  │    └─ css/          //css
+  ├─ docs/           //ドキュメント配置 #pages で公開する
+  │    ├─ ***.md
+  │    ├─ ***.html  #doc
+  │    └─ FMT.html  #テーブル定義書
   ├─ package.json
   ├─ package-lock.json
   ├─ webpack.config.js

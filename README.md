@@ -40,6 +40,27 @@
     　ex) test-IconButton-bugFix
 
   - 作業が終わったらレビューを経てmasterブランチにマージする
+  
+- リポジトリ名の変更
+
+  - Gitサーバ側
+
+    ```bash
+    Settings > Repository name > Rename
+    ```
+
+  - ローカルサーバ側
+
+    ```bash
+    vim .git/config #ローカルリポジトリ内で叩く
+    ```
+
+    ```bash
+    [remote "origin"]
+            url = git@github:px-develop/kintone-dm-1405.git #urlを変更
+    ```
+
+    
 
 
 
@@ -94,7 +115,26 @@
 
   - GitHub Pagesで/docsのみ公開する
 
-  
+
+
+
+## 共通モジュール
+
+- Git submoduleを使います
+
+  <a href="https://github.com/px-develop/kintone_common_modules">kintone共通モジュール</a>
+
+- サブモジュールの追加
+
+  ```bash
+  git submodule add git@github.com:px-develop/kintone_common_modules [submoduleName]
+  ```
+
+- 詳細 | 複雑なので以下を参考にしてください。
+
+  <a href="https://qiita.com/kinpira/items/3309eb2e5a9a422199e9">submoduleと仲良くなる</a>
+
+
 
 ## kintone
 
