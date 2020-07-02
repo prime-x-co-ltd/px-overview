@@ -10,8 +10,8 @@
 
   * 管理要領＋開発に際する留意事項（本ドキュメント）
   * 自社開発ツール（EC2インスタンスレベル）のALL構成図
-  * 自社開発ツール（AWSサービスレベル）の構成図
-  * 構成図フォーマット
+  * <a href="https://px-develop.github.io/px-overview/aws/diagram/service/all.html" target="_blank">自社開発ツール（AWSサービスレベル）のALL構成図</a>
+  * 構成図元データ
 
 * １ツールに関するもの（各ツールでリポジトリを作成）
   * 運用ルールに則ったもの
@@ -22,7 +22,7 @@
 ## 構成図作成
 
 * EC2インスタンスレベルの構成図はツール作成次第、<a href="https://px-develop.github.io/px-overview/aws/diagram/ec2instance/aws-自社開発システム構成図.pptx" target="_blank">aws-自社開発システム構成図.pptx</a>に追記する。追記後、px-overview/docs/aws/diagram/ec2instanceに保存する。
-* AWSサービスレベルの構成図は<a href="https://px-develop.github.io/px-overview/aws/diagram/service/FMT/aws-diagram.drawio" target="_blank">フォーマット</a>をダウンロードし、<a href="https://app.diagrams.net/" target="_blank">作図ツール</a>を用いてpngファイルにて作成する。作成後、px-overview/docs/aws/diagram/serviceに保存する。
+* AWSサービスレベルの構成図は<a href="https://px-develop.github.io/px-overview/aws/diagram/service/all.drawio" target="_blank">元データ</a>をダウンロードし、<a href="https://app.diagrams.net/" target="_blank">作図ツール</a>を用いてhtmlファイルにて作成する。作成後、px-overview/docs/aws/diagram/serviceに保存する。
 
 ## クラウド申請
 
