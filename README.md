@@ -144,6 +144,35 @@
 
 
 
+## AWS
+
+- 新ツールをpx-appサーバ or px-batchサーバに配置した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。
+- モジュール追加後にツール使用言語に応じて以下を実施する。
+
+```bash
+#PHPのAWS共通モジュールを使用する場合はツールのPHPファイルに以下を記載
+require_once([submodule/src/php/cloudwatch.phpのパス]);
+putLogEvents('Success'); #処理成功時
+putLogEvents('Error', [エラー内容の文字列]); #処理失敗時
+```
+
+```bash
+#JSのAWS共通モジュールを使用する場合はツールのJSファイルに以下を記載
+const cloudwatch = require([submodule/src/js/cloudwatch.jsのパス]);
+cloudwatch.putLogEvents('Success'); #処理成功時
+cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗時
+```
+
+```bash
+#PythonのAWS共通モジュールを使用する場合はツールのPythonファイルに以下を記載
+from [submodule/src/py/Cloudwatch.pyのパス] import Cloudwatch
+rootPath = "/home/ec2-user/git/[ルートディレクトリ名]"
+Cloudwatch().put_log_events(rootPath, "Success") #処理成功時
+CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗時
+```
+
+
+
 ## レビュー概念図
 
 ```sequence
