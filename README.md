@@ -124,6 +124,8 @@
 
   <a href="https://github.com/px-develop/kintone_common_modules">kintone共通モジュール</a>
 
+  <a href="https://github.com/prime-x-co-ltd/aws-common-modules">aws共通モジュール</a>
+
 - サブモジュールの追加
 
   ```bash
