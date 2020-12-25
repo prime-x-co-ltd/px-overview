@@ -147,34 +147,52 @@
 ## AWS
 
 - 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,JS,Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
-- モジュール追加後、ツール使用言語に応じて、ツールの処理結果をCloudwatchへ送りたいファイルに以下のコードを追記する。
 
-```bash
-#PHPの場合
+- モジュール追加後、ツール使用言語がPHP or JSの場合は、以下のコマンドを上から順番に実行する。
 
-require_once([submodule/src/php/cloudwatch.phpのパス]);
-putLogEvents('Success'); #処理成功直後に追記
-putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
-```
+  ```bash
+  #PHPの場合
+  
+  cd [追加したサブモジュールのパス] #インストールしたサブモジュールのディレクトリに移動
+  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');" #サブモジュール用のPHPモジュールをインストールするための準備
+  php composer.phar update #サブモジュール用のPHPモジュールインストール
+  ```
 
-```bash
-#JSの場合
+  ```bash
+  #JSの場合
+  
+  cd [追加したサブモジュールのパス] #インストールしたサブモジュールのディレクトリに移動
+  npm install #サブモジュール用のnodeモジュールインストール
+  ```
 
-const cloudwatch = require([submodule/src/js/cloudwatch.jsのパス]);
-cloudwatch.putLogEvents('Success'); #処理成功直後に追記
-cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
-```
+- コマンド実行後、ツール使用言語に応じて、ツールの処理結果をCloudwatchへ送りたいファイルに以下のコードを追記する。
 
-```bash
-#Pythonの場合
+  ```bash
+  #PHPの場合
+  
+  require_once([submodule/src/php/cloudwatch.phpのパス]);
+  putLogEvents('Success'); #処理成功直後に追記
+  putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
+  ```
 
-from [submodule/src/py/Cloudwatch.pyのパス] import Cloudwatch
-rootPath = "/home/ec2-user/git/[ルートディレクトリ名]"
-Cloudwatch().put_log_events(rootPath, "Success") #処理成功直後に追記
-CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗直後に追記
-```
+  ```bash
+  #JSの場合
+  
+  const cloudwatch = require([submodule/src/js/cloudwatch.jsのパス]);
+  cloudwatch.putLogEvents('Success'); #処理成功直後に追記
+  cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
+  ```
 
+  ```bash
+  #Pythonの場合
+  
+  from [submodule/src/py/Cloudwatch.pyのパス] import Cloudwatch
+  rootPath = "/home/ec2-user/git/[ルートディレクトリ名]"
+  Cloudwatch().put_log_events(rootPath, "Success") #処理成功直後に追記
+  CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗直後に追記
+  ```
 
+  
 
 ## レビュー概念図
 
