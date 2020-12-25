@@ -146,24 +146,23 @@
 
 ## AWS
 
-- 新ツールをpx-appサーバ or px-batchサーバに配置した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。※
-  ※新規言語でツールを作成した場合はそのときに新規言語でモジュールを作成します。
-- モジュール追加後、ツール使用言語に応じて以下のコードをツールのファイルに追記する。
+- 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,JS,Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
+- モジュール追加後、ツール使用言語に応じて、ツールの処理結果をCloudwatchへ送りたいファイルに以下のコードを追記する。
 
 ```bash
 #PHPの場合
 
 require_once([submodule/src/php/cloudwatch.phpのパス]);
-putLogEvents('Success'); #処理成功時
-putLogEvents('Error', [エラー内容の文字列]); #処理失敗時
+putLogEvents('Success'); #処理成功直後に追記
+putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
 ```
 
 ```bash
 #JSの場合
 
 const cloudwatch = require([submodule/src/js/cloudwatch.jsのパス]);
-cloudwatch.putLogEvents('Success'); #処理成功時
-cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗時
+cloudwatch.putLogEvents('Success'); #処理成功直後に追記
+cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
 ```
 
 ```bash
@@ -171,8 +170,8 @@ cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗�
 
 from [submodule/src/py/Cloudwatch.pyのパス] import Cloudwatch
 rootPath = "/home/ec2-user/git/[ルートディレクトリ名]"
-Cloudwatch().put_log_events(rootPath, "Success") #処理成功時
-CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗時
+Cloudwatch().put_log_events(rootPath, "Success") #処理成功直後に追記
+CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗直後に追記
 ```
 
 
