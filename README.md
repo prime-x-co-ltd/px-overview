@@ -146,7 +146,7 @@
 
 ## AWS
 
-- 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,JS,Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
+- 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールのルートディレクトリ直下に追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,JS,Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
 
 - モジュール追加後、ツール使用言語がPHP or JSの場合は、以下のコマンドを上から順番に実行する。
 
@@ -178,9 +178,9 @@
   ```bash
   #JSの場合
   
-  const cloudwatch = require([submodule/src/js/cloudwatch.jsのパス]);
-  cloudwatch.putLogEvents('Success'); #処理成功直後に追記
-  cloudwatch.putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
+  import {putLogEvents} from [submodule/dist/cloudwatch.jsのパス]
+  putLogEvents('Success') #処理成功直後に追記
+  putLogEvents('Error', [エラー内容の文字列]) #処理失敗直後に追記
   ```
 
   ```bash
