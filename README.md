@@ -181,38 +181,37 @@
   import {putLogEvents} from [aws-common-modules/src/js/aws.tsのパス]
   #処理成功時に以下を追記
   putLogEvents({
-  	iam: {
-		accessKeyId: [AWSアクセスキーIDの文字列],
+    iam: {
+      accessKeyId: [AWSアクセスキーIDの文字列],
       secretAccessKey: [AWSシークレットアクセスキーの文字列]
-  	},
-  	cwl: {
-  		systemStatus: 'Success'
-  	}
-  	# SNS通知する場合は以下も追記
-  	,sns: {
+    },
+    cwl: {
+      systemStatus: 'Success'
+    }
+    # SNS通知する場合は以下も追記
+    ,sns: {
       topicArn: [SNSトピックのARNの文字列],
-		subject: [メール件名の文字列],
-  		message: [メール本文の文字列]
-  	}
+      subject: [メール件名の文字列],
+      message: [メール本文の文字列]
+    }
   })
   #処理失敗時に以下を追記
   putLogEvents({
-  	iam: {
-  		accessKeyId: [AWSアクセスキーIDの文字列],
+    iam: {
+      accessKeyId: [AWSアクセスキーIDの文字列],
       secretAccessKey: [AWSシークレットアクセスキーの文字列]
-  	},
-  	cwl: {
-  		systemStatus: 'Error',
-  		errorTitle: [エラー内容の文字列]
-  	}
-  	# SNS通知する場合は以下も追記
-  	,sns: {
+    },
+    cwl: {
+      systemStatus: 'Error',
+      errorTitle: [エラー内容の文字列]
+    }
+    # SNS通知する場合は以下も追記
+    ,sns: {
       topicArn: [SNSトピックのARNの文字列],
-  		subject: [メール件名の文字列],
-  		message: [メール本文の文字列]
-  	}
-  })
-  
+      subject: [メール件名の文字列],
+      message: [メール本文の文字列]
+    }
+  })  
   ```
   
   ```bash
