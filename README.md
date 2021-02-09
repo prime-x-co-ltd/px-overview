@@ -146,9 +146,9 @@
 
 ## AWS
 
-- 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールのルートディレクトリ直下に追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,JS,Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
+- 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,TS(JS),Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
 
-- モジュール追加後、ツール使用言語がPHP or JSの場合は、以下のコマンドを上から順番に実行する。
+- モジュール追加後、ツール使用言語がPHP or TS(JS)の場合は、以下のコマンドを上から順番に実行する。
 
   ```bash
   #PHPの場合
@@ -159,10 +159,10 @@
   ```
 
   ```bash
-  #JSの場合
+  #TS(JS)の場合
   
   cd [追加したサブモジュールのパス] #インストールしたサブモジュールのディレクトリに移動
-  npm install --production #サブモジュール用のnodeモジュールインストール
+  npm install #サブモジュール用のnodeモジュールインストール
   ```
 
 - コマンド実行後、ツール使用言語に応じて、ツールの処理結果をCloudwatchへ送りたいファイルに以下のコードを追記する。
@@ -170,28 +170,60 @@
   ```bash
   #PHPの場合
   
-  require_once([submodule/src/php/cloudwatch.phpのパス]);
-  putLogEvents('Success'); #処理成功直後に追記
-  putLogEvents('Error', [エラー内容の文字列]); #処理失敗直後に追記
+  require_once([aws-common-modules/src/php/cloudwatch.phpのパス]);
+  putLogEvents('Success'); #処理成功時に追記
+  putLogEvents('Error', [エラー内容の文字列]); #処理失敗時に追記
   ```
 
   ```bash
-  #JSの場合
+  #TS(JS)の場合
   
-  import {putLogEvents} from [submodule/dist/cloudwatch.jsのパス]
-  putLogEvents('Success') #処理成功直後に追記
-  putLogEvents('Error', [エラー内容の文字列]) #処理失敗直後に追記
+  import {putLogEvents} from [aws-common-modules/src/js/aws.tsのパス]
+  #処理成功時に以下を追記
+  putLogEvents({
+  	iam: {
+		accessKeyId: [AWSアクセスキーIDの文字列],
+      secretAccessKey: [AWSシークレットアクセスキーの文字列]
+  	},
+  	cwl: {
+  		systemStatus: 'Success'
+  	}
+  	# SNS通知する場合は以下も追記
+  	,sns: {
+      topicArn: [SNSトピックのARNの文字列],
+		subject: [メール件名の文字列],
+  		message: [メール本文の文字列]
+  	}
+  })
+  #処理失敗時に以下を追記
+  putLogEvents({
+  	iam: {
+  		accessKeyId: [AWSアクセスキーIDの文字列],
+      secretAccessKey: [AWSシークレットアクセスキーの文字列]
+  	},
+  	cwl: {
+  		systemStatus: 'Error',
+  		errorTitle: [エラー内容の文字列]
+  	}
+  	# SNS通知する場合は以下も追記
+  	,sns: {
+      topicArn: [SNSトピックのARNの文字列],
+  		subject: [メール件名の文字列],
+  		message: [メール本文の文字列]
+  	}
+  })
+  
   ```
-
+  
   ```bash
   #Pythonの場合
   
-  from [submodule/src/py/Cloudwatch.pyのパス] import Cloudwatch
+  from [aws-common-modules/src/py/Cloudwatch.pyのパス] import Cloudwatch
   rootPath = "/home/ec2-user/git/[ルートディレクトリ名]"
-  Cloudwatch().put_log_events(rootPath, "Success") #処理成功直後に追記
-  CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗直後に追記
+  Cloudwatch().put_log_events(rootPath, "Success") #処理成功時に追記
+  CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗時に追記
   ```
-
+  
   
 
 ## レビュー概念図
