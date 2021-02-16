@@ -241,7 +241,9 @@ putLogEvents({
 ```bash
 #Pythonの場合
 
-from [aws-common-modules/src/py/AWS.pyのパス] import AWS
+import sys
+sys.path.append("/home/ec2-user/git/aws-common-modules/src/py")
+from AWS import AWS
 
 # 処理成功時に以下を追記
 AWS({
