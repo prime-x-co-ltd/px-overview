@@ -254,7 +254,7 @@ AWS({
     "cwl": {
         "rootDir": [ツールのルートディレクトリ名(文字列)],
         "systemStatus": "Success"
-    },
+    }
     # SNS通知する場合は以下も追記
     ,"sns": {
         "topicArn": [SNSトピックのARN(文字列)],
@@ -273,7 +273,7 @@ AWS({
         "rootDir": [ツールのルートディレクトリ名(文字列)],
         "systemStatus": "Error",
         "errorTitle": [エラー内容(文字列)]
-    },
+    }
     # SNS通知する場合は以下も追記
     ,"sns": {
         "topicArn": [SNSトピックのARN(文字列)],
