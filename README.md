@@ -146,84 +146,142 @@
 
 ## AWS
 
-- 新ツールをpx-appサーバ or px-batchサーバに作成した場合は、[AWS共通モジュール](https://github.com/prime-x-co-ltd/aws-common-modules)を新ツールに追加する(新ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。PHP,TS(JS),Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
+px-appサーバ or px-batchサーバにツールを作成した場合は、gitディレクトリ直下にあるaws-common-modulesのモジュールをツールに適用する(ツールの処理成功/失敗ログをRDSに格納し、監視ダッシュボード上に反映するため)。※
 
-- モジュール追加後、ツール使用言語がPHP or TS(JS)の場合は、以下のコマンドを上から順番に実行する。
+※PHP,TypeScript,Python以外の言語でツールを作成した場合は、そのときにツール使用言語でモジュールを作成する。
 
-  ```bash
-  #PHPの場合
-  
-  cd [追加したサブモジュールのパス] #インストールしたサブモジュールのディレクトリに移動
-  php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');" #サブモジュール用のPHPモジュールをインストールするための準備
-  php composer.phar update #サブモジュール用のPHPモジュールインストール
-  ```
+＜AWSモジュール適用＞
 
-  ```bash
-  #TS(JS)の場合
-  
-  cd [追加したサブモジュールのパス] #インストールしたサブモジュールのディレクトリに移動
-  npm install #サブモジュール用のnodeモジュールインストール
-  ```
+ツール使用言語に応じて以下のコードを追記する。
 
-- コマンド実行後、ツール使用言語に応じて、ツールの処理結果をCloudwatchへ送りたいファイルに以下のコードを追記する。
+```bash
+#PHPの場合
 
-  ```bash
-  #PHPの場合
-  
-  require_once([aws-common-modules/src/php/cloudwatch.phpのパス]);
-  putLogEvents('Success'); #処理成功時に追記
-  putLogEvents('Error', [エラー内容の文字列]); #処理失敗時に追記
-  ```
+require_once [aws-common-modules/src/php/aws.phpのパス];
 
-  ```bash
-  #TS(JS)の場合
-  
-  import {putLogEvents} from [aws-common-modules/src/js/aws.tsのパス]
-  #処理成功時に以下を追記
-  putLogEvents({
-      iam: {
-          accessKeyId: [AWSアクセスキーIDの文字列],
-          secretAccessKey: [AWSシークレットアクセスキーの文字列]
-      },
-      cwl: {
-          systemStatus: 'Success'
-      }
-      # SNS通知する場合は以下も追記
-      ,sns: {
-          topicArn: [SNSトピックのARNの文字列],
-          subject: [メール件名の文字列],
-          message: [メール本文の文字列]
-      }
-  })
-  #処理失敗時に以下を追記
-  putLogEvents({
-      iam: {
-          accessKeyId: [AWSアクセスキーIDの文字列],
-          secretAccessKey: [AWSシークレットアクセスキーの文字列]
-      },
-      cwl: {
-          systemStatus: 'Error',
-          errorTitle: [エラー内容の文字列]
-      }
-      # SNS通知する場合は以下も追記
-      ,sns: {
-          topicArn: [SNSトピックのARNの文字列],
-          subject: [メール件名の文字列],
-          message: [メール本文の文字列]
-      }
-  })  
-  ```
-  
-  ```bash
-  #Pythonの場合
-  
-  from [aws-common-modules/src/py/Cloudwatch.pyのパス] import Cloudwatch
-  rootPath = "/home/ec2-user/git/[ルートディレクトリ名]"
-  Cloudwatch().put_log_events(rootPath, "Success") #処理成功時に追記
-  CloudWatch().put_log_events(rootPath, "Error", [エラー内容の文字列]) #処理失敗時に追記
-  ```
-  
-  
+#処理成功時に以下を追記
+putLogEvents([
+    'iam' => [
+        'access_key_id' => [AWSアクセスキーID(文字列)],
+        'secret_access_key': [AWSシークレットアクセスキー(文字列)]
+    ],
+    'cwl' => [
+        'root_dir' => [ツールのルートディレクトリ名(文字列)],
+        'system_status' => 'Success'
+    ]
+    # SNS通知する場合は以下も追記
+    ,'sns' => [
+        'topic_arn' => [SNSトピックのARN(文字列)],
+        'subject' => [メール件名(文字列)],
+        'message' => [メール本文(文字列)]
+    ]
+]);
+
+#処理失敗時に以下を追記
+putLogEvents([
+    'iam' => [
+        'access_key_id' => [AWSアクセスキーID(文字列)],
+        'secret_access_key': [AWSシークレットアクセスキー(文字列)]
+    ],
+    'cwl' => [
+        'root_dir' => [ツールのルートディレクトリ名(文字列)],
+        'system_status' => 'Error',
+        'error_title' => [エラー内容(文字列)]
+    ]
+    # SNS通知する場合は以下も追記
+    ,'sns' => [
+        'topic_arn' => [SNSトピックのARN(文字列)],
+        'subject' => [メール件名(文字列)],
+        'message' => [メール本文(文字列)]
+    ]
+]);
+```
+
+```bash
+#TypeScriptの場合
+
+import {putLogEvents} from [aws-common-modules/src/js/aws.tsのパス]
+
+#処理成功時に以下を追記
+putLogEvents({
+    iam: {
+        accessKeyId: [AWSアクセスキーID(文字列)],
+        secretAccessKey: [AWSシークレットアクセスキー(文字列)]
+    },
+    cwl: {
+        systemStatus: 'Success'
+    }
+    # SNS通知する場合は以下も追記
+    ,sns: {
+        topicArn: [SNSトピックのARN(文字列)],
+        subject: [メール件名(文字列)],
+        message: [メール本文(文字列)]
+    }
+})
+
+#処理失敗時に以下を追記
+putLogEvents({
+    iam: {
+        accessKeyId: [AWSアクセスキーID(文字列)],
+        secretAccessKey: [AWSシークレットアクセスキー(文字列)]
+    },
+    cwl: {
+        systemStatus: 'Error',
+        errorTitle: [エラー内容(文字列)]
+    }
+    # SNS通知する場合は以下も追記
+    ,sns: {
+        topicArn: [SNSトピックのARN(文字列)],
+        subject: [メール件名(文字列)],
+        message: [メール本文(文字列)]
+    }
+})  
+```
+
+```bash
+#Pythonの場合
+
+from [aws-common-modules/src/py/AWS.pyのパス] import AWS
+
+# 処理成功時に以下を追記
+AWS({
+    "iam": {
+        "accessKeyId": [AWSアクセスキーID(文字列)],
+        "secretAccessKey": [AWSシークレットアクセスキー(文字列)]
+    },
+    "cwl": {
+        "rootDir": [ツールのルートディレクトリ名(文字列)],
+        "systemStatus": "Success"
+    },
+    # SNS通知する場合は以下も追記
+    ,"sns": {
+        "topicArn": [SNSトピックのARN(文字列)],
+        "subject": [メール件名(文字列)],
+        "message": [メール本文(文字列)]
+    }
+}).putLogEvents()
+
+#処理失敗時に以下を追記
+AWS({
+    "iam": {
+        "accessKeyId": [AWSアクセスキーID(文字列)],
+        "secretAccessKey": [AWSシークレットアクセスキー(文字列)]
+    },
+    "cwl": {
+        "rootDir": [ツールのルートディレクトリ名(文字列)],
+        "systemStatus": "Error",
+        "errorTitle": [エラー内容(文字列)]
+    },
+    # SNS通知する場合は以下も追記
+    ,"sns": {
+        "topicArn": [SNSトピックのARN(文字列)],
+        "subject": [メール件名(文字列)],
+        "message": [メール本文(文字列)]
+    }
+}).putLogEvents()
+```
+
+
 
 ## レビュー概念図
 
