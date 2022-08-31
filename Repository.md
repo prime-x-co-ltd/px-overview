@@ -3,35 +3,37 @@
 ## 共通
 
 -   検証用リポジトリは、接頭に `dev-` をつける
+-   クライアント向けのリポジトリは、接頭に `{project code}-` をつける
 
 ## 業務システム
 
-| systemName | clientName / segment | appId / function / project | description | i.g. Repository               |
-| :--------- | :------------------- | :------------------------- | :---------- | :---------------------------- |
-| kintone    | app                  | 1207                       |             | kintone-app-1207              |
-|            | plugin               | multisearch                |             | kintone-plugin-multisearch    |
-|            | portal               | top                        |             | kintone-portal-top            |
-|            | app                  | template                   |             | kintone-app-template          |
-|            | plugin               | template                   |             | kintone-plugin-template       |
-| formbridge | {client}             | {project}                  |             | formbridge-{client}-{project} |
-| aws        | common               | modules                    |             | aws-common-modules            |
-| gas        | kintone              | getfields                  |             | gas-kintone-getfields         |
-| slack      | tw                   | timeline                   | delete      | slack-tw-timeline-delete      |
-|            | portal               | top                        | template    |                               |
-
-## ドキュメント
-
-| systemName | clientName / segment | appId / function / project | description | i.g. Repository |
-| :--------- | :------------------- | :------------------------- | :---------- | :-------------- |
-| px         | overview             |                            |             | px-overview     |
-|            | blog                 |                            |             | px-blog         |
+| systemName | clientName / segment | appId / function / project | description | i.g.                       |
+| :--------- | :------------------- | :------------------------- | :---------- | :------------------------- |
+| kintone    | app                  | 1207                       |             | kintone-app-1207           |
+|            | plugin               | multisearch                |             | kintone-plugin-multisearch |
+|            | portal               | top                        |             | kintone-portal-top         |
+|            | app                  | template                   |             | kintone-app-template       |
+|            | plugin               | template                   |             | kintone-plugin-template    |
+| formbridge | form                 |                            |             | formbridge-form            |
+|            | mypage               |                            |             | formbridge-mypage          |
+| aws        | common               | modules                    |             | aws-common-modules         |
+| gas        | kintone              | getfields                  |             | gas-kintone-getfields      |
+| slack      | tw                   | timeline                   | delete      | slack-tw-timeline-delete   |
+|            | portal               | top                        | template    |                            |
 
 ## アプリケーション（業務システム以外）
 
-| applicationName | clientName / segment | appId / function / project | description | i.g. Repository |
-| :-------------- | :------------------- | :------------------------- | :---------- | :-------------- |
-| primeXXX        |                      |                            |             | primeXXX        |
-| primeXXX        | api                  |                            |             | primeXXX-api    |
+| applicationName | clientName / segment | appId / function / project | description | i.g.         |
+| :-------------- | :------------------- | :------------------------- | :---------- | :----------- |
+| primeXXX        |                      |                            |             | primeXXX     |
+| primeXXX        | api                  |                            |             | primeXXX-api |
+
+## ドキュメント
+
+| systemName | clientName / segment | appId / function / project | description | i.g.        |
+| :--------- | :------------------- | :------------------------- | :---------- | :---------- |
+| px         | overview             |                            |             | px-overview |
+|            | blog                 |                            |             | px-blog     |
 
 # 今あるリポジトリ（メモベース）
 
