@@ -6,7 +6,7 @@
 
 -   リポジトリ
 
-    -   命名ルール
+    -   RepositoryName
 
         -   構文（旧）
 
@@ -26,12 +26,12 @@
             [systemName | applicationName ] - [clientName | segment ] - [appId | function | project ] - [description]
             ```
 
-            -   systemName ー業務システム名（kintone, aws, slack, gas など）
-            -   applicationName ーアプリケーション名（業務システム以外）
-            -   clinetName ークライアント名の略称
-            -   segment ーセグメントの略称（kintone:app, plugin, slack:tw など）\* gas:関連するシステム kintone や ss など
-            -   appId/function/project ーアプリ ID、機能名/プラグイン名、プロジェクト名などを略して記載
-            -   description ーその他補足（任意）
+            -   systemName - 業務システム名（kintone, aws, slack, gas など）
+            -   applicationName - アプリケーション名（業務システム以外）
+            -   clinetName - クライアント名の略称
+            -   segment - セグメントの略称（kintone:app, plugin, slack:tw など）\* gas:関連するシステム kintone や ss など
+            -   appId/function/project - アプリ ID、機能名/プラグイン名、プロジェクト名などを略して記載
+            -   description - その他補足（任意）
 
         -   全角禁止
 
@@ -39,8 +39,17 @@
 
     -   Description
 
-        -   作成時にリポジトリの概要を記載する（日本語可） i.g. 「プロジェクト管理」「情報システム/ログ管理」
-        -   運用終了時に `運用終了年月` を記載する
+        -   作成時にリポジトリの概要を記載する（日本語可）
+        -   構文
+
+            ```
+            [ systemCategory※ ] [ appName ] [ description ] [ ※運用終了年月(YYYY/MM/DD) ]
+            ```
+
+            -   systemCategory - システムカテゴリ。従業員管理、案件管理、情報システム、etc
+            -   appName - アプリ名。プロジェクト管理、企業マスタ、etc
+            -   description - アプリの概要
+            -   運用終了年月 - 運用終了時に記載する。理由がある場合は理由を添える　 i.g 代替システム ◯◯ 運用開始のため
 
     -   README.md
 
