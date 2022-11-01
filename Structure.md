@@ -19,18 +19,19 @@
 
 ### リポジトリ
 
--   命名
-
-    -   構文
-    -   ケバブケース `xx-xx-xx`
-    -   全角禁止
-
--   ブランチ
-    -   ブランチの活用については、別途「開発フロー」にて記述する
-
-### Wiki
-
--
+-   Repository
+-   Description
+-   Type
+-   Branch
+    -   ブランチの運用方法は検討中
+-   Issue
+    -   `[Feat]` : 新規機能追加
+    -   `[Bug]` :不具合対応
+    -   `[Help]` :ヘルプ対応
+-   PullRequest
+    -   レビュー
+    -   マージリクエスト
+-   Wiki
 
 ### Team
 
@@ -41,6 +42,49 @@
     -
 
 ## 開発フロー
+
+### フロー
+
+#### 新規
+
+1. Repository 作成
+2. branch `dev` 作成
+3. default branch を `dev` に設定
+4. 要件：README に記載
+5. 要件：Issue 作成、対応内容を記載
+6. 開発：Issue のチェックリストをもとに開発
+7. レビュー：PullRequest 作成
+8. レビュー：レビュワー確認
+9. branch `main` にマージ、Issue Close
+10. branch `main` deploy
+
+#### 追加機能をつけたい
+
+1. branch `dev` より、 `feat-XX` 作成
+2. 要件：Issue 作成、対応内容を記載
+3. 開発：Issue のチェックリストをもとに開発
+4. レビュー：PullRequest 作成
+5. レビュー：レビュワー確認
+6. branch `dev` にマージ、Issue Close
+7. branch `main` を deploy
+
+#### 途中で Help したい
+
+1. Issue 作成、Help 内容を記載、Assignee 指定
+2. Assignee 確認対応
+3. Help 完了後、Issue Close
+
+#### バグを発見した
+
+1. Issue 作成、Help 内容を記載、Assignee 指定
+2. Assignee 確認対応、チェックリスト作成
+3. （必要に応じて Assignee は変更）
+4. branch `dev` より `fix-XX` 作成
+5. 修正：Issue のチェックリストをもとに修正
+6. レビュー：PullRequest 作成
+7. レビュー：レビュワー確認
+8. branch `dev` にマージ、Issue Close
+9. branch `main` を deploy
 
 ### ブランチ運用
 
@@ -54,10 +98,6 @@
 
 ## コーディングルール
 
-### 命名
-
--   ファイル名には `camelCase` を使用する
--   変数と関数には `camelCase` を使用する
--   クラス名には `PascalCase` を使用する
+-   別ファイル
 
 ###
