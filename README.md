@@ -11,6 +11,9 @@
 			- [`Repository`](#repository)
 			- [`Description`](#description)
 			- [`Type`](#type)
+			- [`Issue`](#issue)
+			- [`Pull Request`](#pull-request)
+			- [`Wiki`](#wiki)
 			- [`README.md`](#readmemd)
 		- [チーム](#チーム)
 		- [制限・禁止事項](#制限禁止事項)
@@ -80,11 +83,26 @@ Github に関する運用ルールです。
 -   社外アプリケーション
     -   ＃＃
 
+#### `Issue`
+
+-   開発における課題管理に利用する
+-   ※細部要領は `Development`（開発ルール）に記載
+
+#### `Pull Request`
+
+-   レビュー・マージ管理に利用する
+-   ※細部要領は `Development`（開発ルール）に記載
+
+#### `Wiki`
+
+-   検証時のメモ等に使用する
+-   現状ルールは設けない..（よい使い方があったらご提案ください）
+
 #### `README.md`
 
 -   システム構成、スクリプト構成、大まかな制御フローなどソフトウェア申請準拠レベルの内容を記載する
 -   Github 外のドキュメントがある場合は、そのリンクを貼る
--   ※細部記載事項は `Development`（開発ルール）に後述
+-   ※細部要領は `Development`（開発ルール）に記載
 
 ### チーム
 
