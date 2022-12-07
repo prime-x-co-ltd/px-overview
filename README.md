@@ -3,45 +3,47 @@
 ![./docs/px-overview.drawio.svg](./docs/px-overview.drawio.svg)
 
 - [px-overview](#px-overview)
-	- [Operation](#operation)
-		- [全般](#全般)
-			- [管理対象](#管理対象)
-			- [利用者](#利用者)
-		- [リポジトリ](#リポジトリ)
-			- [`Repository`](#repository)
-			- [`Description`](#description)
-			- [`Type`](#type)
-			- [`Issue`](#issue)
-			- [`Pull Request`](#pull-request)
-			- [`Wiki`](#wiki)
-			- [`README.md`](#readmemd)
-		- [チーム](#チーム)
-		- [制限・禁止事項](#制限禁止事項)
-		- [ルールやテンプレートに関する要望](#ルールやテンプレートに関する要望)
-	- [Development](#development)
-	- [Template](#template)
+- [Operation](#operation)
+	- [全般](#全般)
+		- [管理対象](#管理対象)
+		- [利用者](#利用者)
+	- [リポジトリ](#リポジトリ)
+		- [`Repository`](#repository)
+		- [`Description`](#description)
+		- [`Type`](#type)
+		- [`Issue`](#issue)
+		- [`Pull Request`](#pull-request)
+		- [`Wiki`](#wiki)
+		- [`README.md`](#readmemd)
+	- [チーム](#チーム)
+	- [制限・禁止事項](#制限禁止事項)
+	- [ルールやテンプレートに関する要望](#ルールやテンプレートに関する要望)
+- [Development](#development)
+- [Template](#template)
 
-## Operation
+---
+
+# [Operation](README.md)
 
 Github に関する運用ルールです。
 
-### 全般
+## 全般
 
-#### 管理対象
+### 管理対象
 
 -   社内向け業務システム
 -   社内向け制作物
 -   社外向け制作物
 -   検証
 
-#### 利用者
+### 利用者
 
 -   管理対象のソースを扱う社員（現状 DM 部/デザイン部のうち一部の社員）
 -   一部社外の方
 
-### リポジトリ
+## リポジトリ
 
-#### `Repository`
+### `Repository`
 
 -   共通
 
@@ -62,7 +64,7 @@ Github に関する運用ルールです。
 
 -   [Repository.md](./Repository.md)：サンプル等記載
 
-#### `Description`
+### `Description`
 
 -   作成時にリポジトリの概要を記載する（日本語可）
 -   構文
@@ -76,7 +78,7 @@ Github に関する運用ルールです。
     -   description - アプリの概要
     -   運用終了年月 - 運用終了時に記載する。理由がある場合は理由を添える　 i.g 代替システム ◯◯ 運用開始のため
 
-#### `Type`
+### `Type`
 
 -   社内アプリケーション
     -   リポジトリ作成時に `Private` を選択する
@@ -84,39 +86,43 @@ Github に関する運用ルールです。
 -   社外アプリケーション
     -   ＃＃
 
-#### `Issue`
+### `Issue`
 
 -   開発における課題管理に利用する
 -   ※細部要領は `Development`（開発ルール）に記載
 
-#### `Pull Request`
+### `Pull Request`
 
 -   レビュー・マージ管理に利用する
 -   ※細部要領は `Development`（開発ルール）に記載
 
-#### `Wiki`
+### `Wiki`
 
 -   検証時のメモ等に使用する
 -   現状ルールは設けない..（よい使い方があったらご提案ください）
 
-#### `README.md`
+### `README.md`
 
 -   システム構成、スクリプト構成、大まかな制御フローなどソフトウェア申請準拠レベルの内容を記載する
 -   Github 外のドキュメントがある場合は、そのリンクを貼る
 -   ※細部要領は `Development`（開発ルール）に記載
 
-### チーム
+## チーム
 
 -   メンバーを追加した場合は、チームに所属させる
 
-### 制限・禁止事項
+## 制限・禁止事項
 
 -   `Project` は使用しない
 
-### ルールやテンプレートに関する要望
+## ルールやテンプレートに関する要望
 
 -   本リポジトリ px-overview に Issue を立てる or MTG などで意見交換しましょう 🐥✨
 
-## Development
+# [Development](./Development.md)
 
-## Template
+別ページ。開発のルールについて記します
+
+# [Template](./Template.md)
+
+別ページ。テンプレートについて記します
