@@ -17,6 +17,7 @@
 			- [`README.md`](#readmemd)
 		- [チーム](#チーム)
 		- [制限・禁止事項](#制限禁止事項)
+		- [ルールやテンプレートに関する要望](#ルールやテンプレートに関する要望)
 	- [Development](#development)
 	- [Template](#template)
 
@@ -111,6 +112,10 @@ Github に関する運用ルールです。
 ### 制限・禁止事項
 
 -   `Project` は使用しない
+
+### ルールやテンプレートに関する要望
+
+-   本リポジトリ px-overview に Issue を立てる or MTG などで意見交換しましょう 🐥✨
 
 ## Development
 
