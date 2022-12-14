@@ -103,7 +103,7 @@ Github に関する運用ルールです。
 
 ### `README.md`
 
--   システム構成、スクリプト構成、大まかな制御フローなどソフトウェア申請準拠レベルの内容を記載する
+-   システム構成、スクリプト構成、大まかな制御フローなど記載する
 -   Github 外のドキュメントがある場合は、そのリンクを貼る
 -   ※細部要領は `Development`（開発ルール）に記載
 
@@ -119,10 +119,10 @@ Github に関する運用ルールです。
 
 -   本リポジトリ px-overview に Issue を立てる or MTG などで意見交換しましょう 🐥✨
 
-# [Development](./development.md)
+# [Development](./Development.md)
 
 別ページ。開発のルールについて記します
 
-# [Template](./template.md)
+# [Template](./Template.md)
 
 別ページ。テンプレートについて記します
