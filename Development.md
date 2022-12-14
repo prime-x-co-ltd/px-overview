@@ -94,7 +94,7 @@ README.md に記載する事項として。Markdown で記載しましょう。
 ### 全体
 
 -   ソースコードを管理したい単位にてリポジトリを作成する
-    -   リポジトリの単位について [Repository.md を参照](./Repository.md)
+    -   リポジトリの単位について [Repository.md を参照](./overview/repository.md)
 -   ソースコードに関する課題管理を Issue で行う
     -   要件資料がある場合は Issue にリンクを貼る
     -   ※Issue に記載する事項は下記を参考にしてください
@@ -172,4 +172,4 @@ README.md に記載する事項として。Markdown で記載しましょう。
 
 ## コーディングルール
 
-[こちらに記載します](./Coding.md)
+[こちらに記載します](./overview/dev-coding.md)
