@@ -1,6 +1,6 @@
 # px-overview
 
-![./docs/px-overview.drawio.svg](./docs/px-overview.drawio.svg)
+![./docs/px-overview.drawio.svg](./overview/px-overview.drawio.svg)
 
 - [px-overview](#px-overview)
 - [Operation](#operation)
