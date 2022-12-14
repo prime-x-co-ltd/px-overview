@@ -122,31 +122,29 @@ README.md に記載する事項として。Markdown で記載しましょう。
 
 -   `main` ブランチには、現在本番環境に適用しているソースコードをおく
 -   `main` ブランチには直接 push せず、`dev` からマージする
--   開発は `dev` ブランチ、`dev` 派生のブランチで行う
+-   開発作業は `dev` ブランチ、または `dev` 派生のブランチで行う
     -   `feat/**` :機能追加
     -   `fix/**` :機能修正
 -   `dev -> main` のマージには、PullRequest を使用する
--   緊急修正の場合は、`main` ブランチから `hotfix/**` ブランチを切り、対応する
+-   緊急修正の場合は、`main` ブランチから `hotfix/**` ブランチを切り、`dev`, `main` にマージする
 
 #### 新規に開発したい
 
 1. Repository 作成
 2. branch `dev` 作成
-3. default branch を `dev` に設定
-4. 要件：README に記載
-5. 要件：Issue 作成、対応内容を記載
-6. 開発：Issue のチェックリストをもとに開発
-7. レビュー：PullRequest 作成
-8. レビュー：レビュワー確認
-9. branch `dev` で開発を実施
-10. branch `main` にマージ、Issue Close
-11. branch `main` deploy
+3. 要件：README に記載
+4. 要件：Issue 作成、開発要件記載
+5. 開発：Issue のチェックリストをもとに branch `dev` で開発を実施
+6. レビュー：PullRequest 作成
+7. レビュー：レビュワー確認
+8. branch `main` にマージ、Issue Close
+9. branch `main` deploy
 
 #### 追加機能をつけたい
 
 1. branch `dev` より、branch `feat/XX` 作成
-2. 要件：Issue 作成、対応内容を記載
-3. 開発：Issue のチェックリストをもとに開発
+2. 要件：Issue 作成、追加要件記載
+3. 開発：Issue のチェックリストをもとに branch `dev` で開発を実施開発
 4. レビュー：PullRequest 作成
 5. レビュー：レビュワー確認
 6. branch `dev` にマージ、Issue Close
