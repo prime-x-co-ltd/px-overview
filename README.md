@@ -62,7 +62,7 @@ Github に関する運用ルールです。
     -   appId/function/project - アプリ ID、機能名/プラグイン名、プロジェクト名などを略して記載
     -   description - その他補足（任意）
 
--   [Repository.md](./Repository.md)：サンプル等記載
+-   [Repository.md](./overview/repository.md)：サンプル等記載
 
 ### `Description`
 
@@ -89,12 +89,12 @@ Github に関する運用ルールです。
 ### `Issue`
 
 -   開発における課題管理に利用する
--   ※細部要領は `Development`（開発ルール）に記載
+-   ※細部要領は [Development（開発ルール）](./Development.md)に記載
 
 ### `Pull Request`
 
 -   レビュー・マージ管理に利用する
--   ※細部要領は `Development`（開発ルール）に記載
+-   ※細部要領は [Development（開発ルール）](./Development.md)に記載
 
 ### `Wiki`
 
@@ -105,7 +105,7 @@ Github に関する運用ルールです。
 
 -   システム構成、スクリプト構成、大まかな制御フローなど記載する
 -   Github 外のドキュメントがある場合は、そのリンクを貼る
--   ※細部要領は `Development`（開発ルール）に記載
+-   ※細部要領は [Development（開発ルール）](./Development.md)に記載
 
 ## チーム
 

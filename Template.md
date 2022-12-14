@@ -50,8 +50,9 @@
 ### 共通モジュール
 
 -   Git submodule を使います
-    <a href="https://github.com/px-develop/kintone_common_modules">kintone 共通モジュール</a>
-    <a href="https://github.com/prime-x-co-ltd/aws-common-modules">aws 共通モジュール</a>
+
+    -   <a href="https://github.com/px-develop/kintone_common_modules">kintone 共通モジュール</a>
+    -   <a href="https://github.com/prime-x-co-ltd/aws-common-modules">aws 共通モジュール</a>
 
 -   サブモジュールの追加
 
